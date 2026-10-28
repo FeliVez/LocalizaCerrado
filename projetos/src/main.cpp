@@ -3,8 +3,16 @@
 #include "Grafo.h"
 #include "Usuarios.h"
 #include "Roteamento.h"
+#include "Api.h"
 
-signed main(void){
+signed main(signed argc, char* argv[]){
+    if(argc >= 2 && string(argv[1]) == "--api"){
+        int porta = 8080;
+        if(argc >= 3){
+            try{ porta = stoi(argv[2]); }catch(...){ cerr << "Porta invalida.\n"; return 1; }
+        }
+        return IniciarAPI(porta);
+    }
     ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
     puts("Deseja iniciar o programa? (1-sim, 0-nao)");
     int op = DescobrirOpcaoUsuario();
