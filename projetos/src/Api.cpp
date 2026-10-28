@@ -19,6 +19,7 @@ int IniciarAPI(int porta){
 #include <mutex>
 #include <thread>
 #include <unordered_map>
+#include <utility>
 #include <boost/asio.hpp>
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
