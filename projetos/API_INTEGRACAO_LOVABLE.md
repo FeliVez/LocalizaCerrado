@@ -1,4 +1,4 @@
-# RotasGoias — contrato de integração com Lovable
+# LocalizaCerrado — contrato de integração com Lovable
 
 O frontend deve chamar esta API. Os algoritmos de roteamento permanecem no backend C++.
 
