@@ -1,0 +1,16 @@
+# Dados pessoais gerados em tempo de execução
+projetos/data/Usuarios.txt
+**/Usuarios.txt
+
+# Artefatos de compilação
+*.exe
+*.o
+*.obj
+*.out
+/output/
+/build/
+
+# Configurações locais
+.vscode/
+.DS_Store
+Thumbs.db
