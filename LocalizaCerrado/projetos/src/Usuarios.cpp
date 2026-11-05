@@ -64,14 +64,13 @@ float ValidarAutonomia(){
     float Autonomia;
     cin >> Autonomia;
     system("cls");
-        while(Autonomia <= 0){
+        while(Autonomia <= 0.0f){
             puts("Autonomia invalida. O valor deve ser positivo nao nulo. Informe uma autonomia valida.");
             cin >> Autonomia;
             system("cls");
         }
     return Autonomia;
 }
-
 
 bool Compara(const Usuario &a,const Usuario &b){
     return a.CPF < b.CPF;

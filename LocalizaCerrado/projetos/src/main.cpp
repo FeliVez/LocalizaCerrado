@@ -45,9 +45,15 @@ signed main(signed argc, char* argv[]){
                 }else{
                     int chave = BuscaBinariaCPF(usuarios,0,usuarios.size()-1,u.CPF);
                         if(chave!=-1){
-                            u = usuarios[chave];
-                            cout << "CPF encontrado com sucesso! Bem vindo(a) de volta " << usuarios[chave].Nome << '!' << endl;
-                    puts("Agora iremos prosseguir com o programa!");
+                            cout << "CPF encontrado com sucesso! Bem vindo(a) de volta " << usuarios[chave].Nome << "!\nA autonomia do seu veiculo eh de: " << usuarios[chave].Autonomia << " deseja modificar esse valor? (1-sim, 0-nao)" << endl;
+                            op = DescobrirOpcaoUsuario();
+                            if(!op) puts("Certo, a autonomia sera mantida a mesma.");
+                            else{
+                                puts("Certo, a seguir, digite sua nova autonomia a ser considerada para seu veiculo.");
+                                usuarios[chave].Autonomia = ValidarAutonomia();
+                            }
+                        u = usuarios[chave];
+                        puts("Agora iremos prosseguir com o programa!");
                         } else{
                             puts("Seu CPF ainda nao foi cadastrado no sistema.\nGostaria de realizar seu cadastro no sistema? (1-sim,0-nao)");
                 if(!CadastrarUsuario(u,usuarios)) return 0;
