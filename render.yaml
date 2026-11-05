@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: LocalizaCerrado_API
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: ROTAS_CORS_ORIGIN
+        value: https://localizacerrado.lovable.app

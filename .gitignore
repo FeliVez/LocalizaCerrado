@@ -1,5 +1,4 @@
 # Dados pessoais gerados em tempo de execução
-projetos/data/Usuarios.txt
 **/Usuarios.txt
 
 # Artefatos de compilação
@@ -7,8 +6,8 @@ projetos/data/Usuarios.txt
 *.o
 *.obj
 *.out
-/output/
-/build/
+**/build/
+**/output/
 
 # Configurações locais
 .vscode/

@@ -180,9 +180,16 @@ string RotaBasica(Dados &d,const string &body){
         if(i+1<caminho.size()) custoPed+=d.pedagios[caminho[i]][caminho[i+1]];
     }
     cidades+=']';
-    float autonomia=0; string cpf=CampoString(body,"cpf");
-    if(!cpf.empty()) for(const Usuario &u:d.usuarios) if(u.CPF==cpf){ autonomia=u.Autonomia; break; }
-    if(autonomia<=0) autonomia=CampoNumero(body,"autonomy");
+    float autonomia=CampoNumero(body,"autonomy");
+    if(autonomia<=0.0f){
+        string cpf=CampoString(body,"cpf");
+        if(!cpf.empty())
+            for(const Usuario &u:d.usuarios)
+                if(u.CPF==cpf){
+                    autonomia=u.Autonomia;
+                    break;
+                }
+    }
     float litros=autonomia>0 ? dist[d.mp[destino]]/autonomia : 0;
     float custoGas=litros*Gasolina;
     return "{\"found\":true,\"origin\":"+JSONString(origem)+",\"destination\":"+JSONString(destino)+
@@ -274,9 +281,16 @@ string RotaComParadas(Dados &d,const string &body){
     }
     cidades+=']';
     string ordemNomes="["; for(size_t i=0;i<ordem.size();i++){ if(i) ordemNomes+=','; ordemNomes+=JSONString(d.pm[pontos[ordem[i]]]); } ordemNomes+=']';
-    float autonomia=0; string cpf=CampoString(body,"cpf");
-    if(!cpf.empty()) for(const Usuario &u:d.usuarios) if(u.CPF==cpf){ autonomia=u.Autonomia; break; }
-    if(autonomia<=0) autonomia=CampoNumero(body,"autonomy");
+    float autonomia=CampoNumero(body,"autonomy");
+    if(autonomia<=0.0f){
+        string cpf=CampoString(body,"cpf");
+        if(!cpf.empty())
+            for(const Usuario &u:d.usuarios)
+                if(u.CPF==cpf){
+                    autonomia=u.Autonomia;
+                    break;
+                }
+    }
     float litros=autonomia>0?distanciaTotal/autonomia:0, custoGas=litros*Gasolina;
     return "{\"found\":true,\"origin\":"+JSONString(origem)+",\"destination\":"+JSONString(destino)+
         ",\"distanceKm\":"+Numero(distanciaTotal)+",\"path\":"+cidades+",\"stopOrder\":"+ordemNomes+

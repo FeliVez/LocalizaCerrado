@@ -10,6 +10,7 @@ bool CarregarCidades(const string &caminho, map<string,int> &mp, map<int,string>
     int id;
     string cidade;
     while(arquivo >> id && getline(arquivo >> ws,cidade)){
+        if(!cidade.empty() && cidade.back() == '\r') cidade.pop_back();
         mp[cidade] = id;
         pm[id] = cidade;
     }
